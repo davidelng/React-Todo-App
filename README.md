@@ -8,9 +8,12 @@ Support for light/dark mode with TailwindCSS.
 
 Made purely for practice.
 
+## How to test
+
+Clone the project and run `npm install` in the root folder
+
+Run `npm run dev` to start the dev server
+
 ## Screenshots
 
-<img alt="Main page in dark mode" style="max-height: 600px" src="./screenshots/dark-main.png"/>
-<img alt="Active menu in dark mode" style="max-height: 600px" src="././screenshots/dark-menu.png"/>
-<img alt="Main page in light mode" style="max-height: 600px" src="./screenshots/main.png"/>
-<img alt="Edit state in light mode" style="max-height: 600px" src="./screenshots/edit.png"/>
+![Screenshot of the app](./screenshot.png)
