@@ -2,9 +2,9 @@ import { useState } from "react";
 
 const Header = () => {
   return (
-    <header className="p-2 border-b bg-white">
+    <header className="p-2 border-b bg-white dark:bg-black dark:border-b-neutral-900">
       <div className="max-w-xl mx-auto flex gap-2 justify-between items-center">
-        <h1 className="uppercase font-semibold text-gray-500 hover:text-indigo-500">
+        <h1 className="uppercase font-semibold text-gray-500 dark:text-neutral-300 hover:text-indigo-500">
           <a href="#">Tasky</a>
         </h1>
         <Clock />
@@ -20,7 +20,7 @@ const Clock = () => {
   const day = date[2];
 
   return (
-    <p className="grid grid-cols-2 grid-rows-2">
+    <p className="grid grid-cols-2 grid-rows-2 dark:text-neutral-300">
       <span className="row-span-2 font-semibold text-4xl mr-1">{day}</span>
       <span className="text-sm">{weekday}</span>
       <span className="text-sm">{month}</span>
@@ -30,7 +30,7 @@ const Clock = () => {
 
 const Footer = () => {
   return (
-    <footer className="p-2 my-4 text-gray-500">
+    <footer className="p-2 my-4 text-gray-500 dark:text-neutral-400">
       <p className="px-4 text-xs max-w-2xl mx-auto text-center">
         Powered by React, TypeScript and TailwindCSS
       </p>
@@ -44,7 +44,7 @@ const TaskList = ({ title, list }: { title: string; list: JSX.Element[] }) => {
       className="p-4 pr-3 md:pr-0 max-w-xl mx-auto"
       id={title + "_tasks_list"}
     >
-      <h3 className="text-gray-700 font-semibold">
+      <h3 className="text-gray-700 dark:text-neutral-300 font-semibold">
         {title} ({list.length})
       </h3>
       <ul>{list}</ul>
@@ -94,10 +94,10 @@ const TaskItem = ({
           className="flex items-center gap-2 w-full"
         >
           <label htmlFor="newTodoInput" className="sr-only">
-            Add todo
+            Edit task
           </label>
           <input
-            className="bg-white p-2 flex-1 rounded-md shadow-sm border border-gray-300"
+            className="bg-white dark:bg-neutral-800 dark:text-neutral-500 p-2 flex-1 rounded-md shadow-sm border border-gray-300 dark:border-neutral-600"
             type="text"
             id="newTodoInput"
             name="newTodoInput"
@@ -106,7 +106,7 @@ const TaskItem = ({
           />
           <button
             type="submit"
-            className="ml-auto flex items-center rounded p-2 text-gray-500 border border-transparent hover:border-gray-300"
+            className="ml-auto flex items-center rounded p-2 text-gray-500 dark:text-neutral-500 border border-transparent hover:border-gray-300 dark:hover:border-neutral-500"
           >
             <span className="sr-only">Edit</span>
             <svg
@@ -131,7 +131,7 @@ const TaskItem = ({
     return (
       <li className="flex items-center gap-2 my-2 p-2 md:pr-0">
         <input
-          className="rounded border-2 border-indigo-500 text-indigo-500 focus:ring-indigo-500"
+          className="rounded border-2 border-indigo-500 text-indigo-500 focus:ring-indigo-500 dark:bg-neutral-700 dark:border-neutral-600"
           type="checkbox"
           title={"task_" + id}
           name={"task_" + id}
@@ -139,11 +139,11 @@ const TaskItem = ({
           defaultChecked={completed}
           onChange={() => completeTask(id)}
         />
-        <span className="text-gray-600">{title}</span>
+        <span className="text-gray-600 dark:text-neutral-300">{title}</span>
         <button
           onClick={() => toggleEditMode()}
           type="button"
-          className="ml-auto flex items-center rounded p-2 text-gray-500 border border-transparent hover:border-gray-300"
+          className="ml-auto flex items-center rounded p-2 text-gray-500 dark:text-neutral-500 border border-transparent hover:border-gray-300 dark:hover:border-neutral-600"
         >
           <span className="sr-only">Edit</span>
           <svg
@@ -164,7 +164,7 @@ const TaskItem = ({
         <button
           onClick={() => deleteTask(id)}
           type="button"
-          className="flex items-center rounded p-2 text-gray-500 border border-transparent hover:border-gray-300"
+          className="flex items-center rounded p-2 text-gray-500 dark:text-neutral-500 border border-transparent hover:border-gray-300 dark:hover:border-neutral-600"
         >
           <span className="sr-only">Delete</span>
           <svg
@@ -193,7 +193,7 @@ const Searchbar = ({
   filterTasks: (query: string) => void;
 }) => {
   return (
-    <div className="flex-grow text-gray-500 bg-white shadow-sm border border-gray-300 my-2 rounded-md flex items-center focus-within:border-indigo-500 focus-within:ring-1 focus-within:ring-indigo-500">
+    <div className="flex-grow text-gray-500 dark:text-neutral-500 bg-white dark:bg-neutral-800 shadow-sm border border-gray-300 dark:border-neutral-600 my-2 rounded-md flex items-center focus-within:border-indigo-500 focus-within:ring-1 focus-within:ring-indigo-500">
       <label htmlFor="filterTasks" className="px-2">
         <span className="sr-only">Search for tasks</span>
         <svg
@@ -212,7 +212,7 @@ const Searchbar = ({
         </svg>
       </label>
       <input
-        className="border-none focus-visible:outline-none bg-transparent p-2 flex-1 focus:ring-0"
+        className="border-none focus-visible:outline-none bg-transparent p-2 flex-1 focus:ring-0 dark:placeholder-neutral-500"
         placeholder="Search for tasks.."
         type="text"
         id="filterTasks"
@@ -238,13 +238,13 @@ const AddTask = ({ addNewTask }: { addNewTask: (todo: string) => void }) => {
     <form
       action="#"
       onSubmit={(e) => addTodoToList(e)}
-      className="mx-4 md:mx-auto max-w-xl text-gray-500 bg-white shadow-sm border border-gray-300 my-4 rounded-md flex items-center focus-within:border-indigo-500 focus-within:ring-1 focus-within:ring-indigo-500"
+      className="mx-4 md:mx-auto max-w-xl text-gray-500 dark:text-neutral-500 bg-white dark:bg-neutral-800 shadow-sm border border-gray-300 dark:border-neutral-600 my-4 rounded-md flex items-center focus-within:border-indigo-500 focus-within:ring-1 focus-within:ring-indigo-500"
     >
       <label htmlFor="newTodoInput" className="sr-only">
         Add todo
       </label>
       <input
-        className="bg-transparent p-2 flex-1 focus-visible:outline-none focus:ring-0 border-none"
+        className="bg-transparent p-2 flex-1 focus-visible:outline-none focus:ring-0 border-none dark:placeholder-neutral-500"
         type="text"
         id="newTodoInput"
         name="newTodoInput"
@@ -293,10 +293,10 @@ const MassiveActions = ({
       <button
         onClick={() => toggleMenu()}
         className={
-          "text-xs text-gray-600 rounded-md p-2 border" +
+          "text-xs text-gray-600 dark:text-neutral-500 rounded-md p-2 border" +
           (open
             ? " border-indigo-500 ring-1 ring-indigo-500"
-            : " border-transparent hover:border-gray-300")
+            : " border-transparent hover:border-gray-300 dark:hover:border-neutral-600")
         }
       >
         <span className="sr-only">Massive actions</span>
@@ -318,13 +318,13 @@ const MassiveActions = ({
       {open && (
         <ul
           id="massive_actions"
-          className="absolute right-0 top-12 bg-white shadow-sm border border-gray-300 rounded-md"
+          className="absolute right-0 top-12 bg-white dark:bg-neutral-900 shadow-sm border border-gray-300 dark:border-neutral-600 rounded-md"
         >
-          <li className="p-2 border-b border-gray-300 min-w-[9rem]">
+          <li className="p-2 border-b border-gray-300 dark:border-neutral-600 min-w-[9rem]">
             <button
               type="button"
               onClick={() => deleteAll()}
-              className="flex items-center justify-around gap-2 text-gray-600 w-full hover:text-indigo-500"
+              className="flex items-center justify-around gap-2 text-gray-600 dark:text-neutral-500 w-full hover:text-indigo-500"
             >
               <span>Delete all</span>
               <svg
@@ -343,11 +343,11 @@ const MassiveActions = ({
               </svg>
             </button>
           </li>
-          <li className="p-2 border-b border-gray-300">
+          <li className="p-2 border-b border-gray-300 dark:border-neutral-600">
             <button
               type="button"
               onClick={() => doneAll()}
-              className="flex items-center justify-around gap-2 text-gray-600 w-full hover:text-indigo-500"
+              className="flex items-center justify-around gap-2 text-gray-600 dark:text-neutral-500 w-full hover:text-indigo-500"
             >
               <span>Done all</span>
               <svg
@@ -367,7 +367,7 @@ const MassiveActions = ({
             </button>
           </li>
           <li className="p-2 px-4">
-            <label className="flex items-center justify-around gap-2 text-gray-600 w-full hover:text-indigo-500 group cursor-pointer">
+            <label className="flex items-center justify-around gap-2 text-gray-600 dark:text-neutral-500 w-full hover:text-indigo-500 group cursor-pointer">
               Hide done
               <input
                 onChange={() => toggleDone()}
@@ -375,7 +375,7 @@ const MassiveActions = ({
                 type="checkbox"
                 name="toggleDone"
                 id="toggle_done"
-                className="rounded border-2 group-hover:border-indigo-500 checked:border-indigo-500 text-indigo-500 focus:ring-indigo-500 cursor-pointer"
+                className="rounded border-2 dark:bg-neutral-600 group-hover:border-indigo-500 checked:border-indigo-500 text-indigo-500 focus:ring-indigo-500 cursor-pointer"
               />
             </label>
           </li>
@@ -475,7 +475,7 @@ const App = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-indigo-50/10">
+    <div className="min-h-screen flex flex-col bg-indigo-50/10 dark:bg-black">
       <Header />
       <main className="flex-grow my-2">
         <AddTask addNewTask={handleAddTask} />
@@ -493,7 +493,7 @@ const App = () => {
           )}
         </div>
         {filtered.length < 1 ? (
-          <p className="text-center font-semibold text-gray-300 my-8">
+          <p className="text-center font-semibold text-gray-300 dark:text-neutral-500 my-8">
             Wow so empty (・3・)
           </p>
         ) : (
